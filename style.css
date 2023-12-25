@@ -1,0 +1,92 @@
+img {
+    width: 150px;
+    margin: 0 auto;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: #111827;
+    color: #432000;
+    user-select: none;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin: 30px auto;
+}
+
+textarea {
+    color: #DCE1EB;
+    background-color: #374151;
+    border: 0;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 17px;
+    margin: 10px 0 8px 0;
+}
+
+.names {
+    display: flex;
+    gap: 10px;
+    height: 40px;
+    margin-bottom: 8px;
+
+}
+
+.from-field,
+.to-field {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #374151;
+    color: #DCE1EB;
+    border: 0;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 17px;
+    width: 125px;
+}
+
+button {
+    color: #111827;
+    background-color: #D94556;
+    border: 0;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+h1,
+h2 {
+
+    color: #DCE1EB;
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap-reverse;
+    gap: 10px;
+
+}
+
+ul li {
+    background-color: #FFFDF8;
+    padding: 15px;
+    border-radius: 1px;
+    box-shadow: 0px 1px 4px #D94556;
+}
