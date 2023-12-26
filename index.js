@@ -29,8 +29,6 @@ addButtonEl.addEventListener("click", function () {
 
     push(endorsementsInDB, reviewObject)
 
-    // endorsementListOnPage(inputValue, fromValue, toValue)
-
     clearTextArea()
 })
 
