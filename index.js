@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://playing-around-17c5e-default-rtdb.europe-west1.firebasedatabase.app/"
@@ -21,20 +21,31 @@ addButtonEl.addEventListener("click", function () {
     let fromValue = fromFieldEl.value
     let toValue = toFieldEl.value
 
-    push(endorsementsInDB, inputValue, fromValue, toValue)
+    let reviewObject = {
+        review: inputValue,
+        from: fromValue,
+        to: toValue
+    }
 
-    // push({
-    //     from: "fsdfsd",
-    //     to: "ghgfh",
-    //     endorsement: "dfgdfgdfgfdg"
-    // })
+    push(endorsementsInDB, reviewObject)
 
-    endorsementListOnPage(inputValue, fromValue, toValue)
-
-
+    // endorsementListOnPage(inputValue, fromValue, toValue)
 
     clearTextArea()
 })
+
+onValue(endorsementsInDB, function (snapshot) {
+    endorsementEl.innerHTML = ""
+
+    if (snapshot.exists()) {
+        let itemsArray = Object.values(snapshot.val());
+        for (let i = 0; i < itemsArray.length; i++) {
+            let currentReview = itemsArray[i];
+            console.log(currentReview)
+            endorsementListOnPage(currentReview.review, currentReview.from, currentReview.to);
+        }
+    }
+});
 
 function endorsementListOnPage(endorsementValue, frominputValue, toinputValue) {
     endorsementEl.innerHTML +=
@@ -44,10 +55,12 @@ function endorsementListOnPage(endorsementValue, frominputValue, toinputValue) {
     ${endorsementValue} 
     </p>
     <b> ${toinputValue} </b>
-    
         </li>`
 }
 
 function clearTextArea() {
     inputFieldEl.value = ""
+    fromFieldEl.value = ""
+    toFieldEl.value = ""
 }
+
